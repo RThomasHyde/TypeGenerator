@@ -1,20 +1,19 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netstandard2.0</TargetFramework>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
     <IsPackable>true</IsPackable>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PublishRepositoryUrl>true</PublishRepositoryUrl>
     <EmbedUntrackedSources>true</EmbedUntrackedSources>
-    <AllowedOutputExtensionsInPackageBuildOutputFolder>$(AllowedOutputExtensionsInPackageBuildOutputFolder);.pdb</AllowedOutputExtensionsInPackageBuildOutputFolder>
-    <Description>Type Generator for .NET Standard can generate types runtime from delegates and existing types.</Description>
+    <Description>Type Generator for .NET Core can generate types runtime from delegates and existing types.</Description>
     <PackageDescription>Type Generator for .NET Standard can generate types runtime from delegates and existing types.</PackageDescription>
-    <PackageId>Weikio.TypeGenerator</PackageId>
-    <Product>Weikio.TypeGenerator</Product>
+    <PackageId>RThomasHyde.TypeGenerator</PackageId>
+    <Product>RThomasHyde.TypeGenerator</Product>
     <PackageTags>type;assembly;dynamic;runtime;generation;wrapping;roslyn</PackageTags>
-    <Title>Weikio.TypeGenerator</Title>
-    <RepositoryUrl>https://github.com/weikio/Weikio.TypeGenerator</RepositoryUrl>
-    <PackageProjectUrl>https://github.com/weikio/Weikio.TypeGenerator</PackageProjectUrl>
+    <Title>RThomasHyde.TypeGenerator</Title>
+    <RepositoryUrl>https://github.com/RThomasHyde/TypeGenerator</RepositoryUrl>
+    <PackageProjectUrl>https://github.com/RThomasHyde/TypeGenerator</PackageProjectUrl>
   </PropertyGroup>
 
   <ItemGroup>

@@ -1,11 +1,10 @@
-﻿using System.Diagnostics;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
-using System.Text;
 using Xunit;
 using Xunit.Abstractions;
 
-namespace Weikio.TypeGenerator.Tests
+namespace RThomasHyde.TypeGenerator.Tests
 {
     public class CodeToAssemblyGeneratorTests
     {

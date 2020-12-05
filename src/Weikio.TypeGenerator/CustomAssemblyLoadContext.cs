@@ -1,14 +1,14 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using System.Reflection;
 using System.Runtime.Loader;
 
-namespace Weikio.TypeGenerator
+namespace RThomasHyde.TypeGenerator
 {
     public class CustomAssemblyLoadContext : AssemblyLoadContext
     {
         private readonly List<Assembly> _assemblies;
 
-        public CustomAssemblyLoadContext(List<Assembly> assemblies) 
+        public CustomAssemblyLoadContext(List<Assembly> assemblies) : base(isCollectible: true)
         {
             _assemblies = assemblies;
         }

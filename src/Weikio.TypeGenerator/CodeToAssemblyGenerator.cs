@@ -1,14 +1,15 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.IO;
 using System.Linq;
 using System.Reflection;
+using System.Runtime.Loader;
 using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp;
 using Microsoft.CodeAnalysis.Emit;
 
-namespace Weikio.TypeGenerator
+namespace RThomasHyde.TypeGenerator
 {
     /// <summary>
     ///     Note: Heavily based on the work done by Jeremy Miller in Lamar: https://github.com/jasperfx/Lamar
@@ -28,7 +29,7 @@ namespace Weikio.TypeGenerator
 
             if (string.IsNullOrEmpty(workingFolder))
             {
-                workingFolder = Path.Combine(Path.GetTempPath(), "Weikio.TypeGenerator", name, version);
+                workingFolder = Path.Combine(Path.GetTempPath(), "RThomasHyde.TypeGenerator", name, version);
             }
 
             _workingFolder = workingFolder;
@@ -103,7 +104,8 @@ namespace Weikio.TypeGenerator
             ReferenceAssembly(typeof(T).GetTypeInfo().Assembly);
         }
 
-        public Assembly GenerateAssembly(string code)
+        // allow passing in an own AssemblyLoadContext, to allow for the use of collectible assemblies
+        public Assembly GenerateAssembly(string code, AssemblyLoadContext loadContext = null)
         {
             var assemblyName = AssemblyName ?? Path.GetFileNameWithoutExtension(Path.GetRandomFileName());
             var text = CSharpSyntaxTree.ParseText(code);
@@ -117,7 +119,7 @@ namespace Weikio.TypeGenerator
 
             var fullPath = Path.Combine(_workingFolder, assemblyName);
             var assemblyPaths = _assemblies.Where(x => !string.IsNullOrWhiteSpace(x.Location)).Select(x => x).ToList();
-            var loadContext = new CustomAssemblyLoadContext(assemblyPaths);
+            loadContext ??= new CustomAssemblyLoadContext(assemblyPaths);
             
             var compilation = CSharpCompilation
                 .Create(assemblyName, syntaxTreeArray, array,
@@ -127,34 +129,34 @@ namespace Weikio.TypeGenerator
 
             if (!_persist)
             {
-                using (var memoryStream = new MemoryStream())
+                using var memoryStream = new MemoryStream();
+
+                var emitResult = compilation.Emit(memoryStream);
+
+                if (!emitResult.Success)
                 {
-                    var emitResult = compilation.Emit(memoryStream);
-
-                    if (!emitResult.Success)
-                    {
-                        ThrowError(code, emitResult);
-                    }
-
-                    memoryStream.Seek(0L, SeekOrigin.Begin);
-                    var assembly = loadContext.LoadFromStream(memoryStream);
-
-                    return assembly;
+                    ThrowError(code, emitResult);
                 }
+
+                memoryStream.Seek(0L, SeekOrigin.Begin);
+                var assembly = loadContext.LoadFromStream(memoryStream);
+
+                return assembly;
             }
-            
-            using (var dllStream = new MemoryStream())
-            using (var pdbStream = new MemoryStream())
-            using (var win32resStream = compilation.CreateDefaultWin32Resources(
+
+            using var dllStream = new MemoryStream();
+            using var pdbStream = new MemoryStream();
+            using var win32ResStream = compilation.CreateDefaultWin32Resources(
                 true,
                 false,
                 null,
-                null))
+                null);
+
             {
                 var emitResult = compilation.Emit(
                     dllStream,
                     pdbStream,
-                    win32Resources: win32resStream);
+                    win32Resources: win32ResStream);
 
                 if (!emitResult.Success)
                 {

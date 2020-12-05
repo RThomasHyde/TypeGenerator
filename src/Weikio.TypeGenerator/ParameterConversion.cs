@@ -1,4 +1,4 @@
-﻿namespace Weikio.TypeGenerator
+namespace RThomasHyde.TypeGenerator
 {
     public class ParameterConversion
     {

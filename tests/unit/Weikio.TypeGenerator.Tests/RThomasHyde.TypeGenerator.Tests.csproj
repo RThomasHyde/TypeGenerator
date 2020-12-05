@@ -13,7 +13,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\..\src\Weikio.TypeGenerator\Weikio.TypeGenerator.csproj" />
+    <ProjectReference Include="..\..\..\src\Weikio.TypeGenerator\RThomasHyde.TypeGenerator.csproj" />
   </ItemGroup>
 
 

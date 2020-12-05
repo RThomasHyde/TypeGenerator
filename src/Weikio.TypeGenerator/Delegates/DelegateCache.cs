@@ -1,7 +1,7 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 
-namespace Weikio.TypeGenerator.Delegates
+namespace RThomasHyde.TypeGenerator.Delegates
 {
     public class DelegateCache
     {

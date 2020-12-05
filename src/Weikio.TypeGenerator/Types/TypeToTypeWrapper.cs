@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
@@ -7,10 +7,9 @@ using System.Text;
 using System.Text.RegularExpressions;
 using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp;
-using Microsoft.CodeAnalysis.CSharp.Syntax;
-using Weikio.TypeGenerator.Delegates;
+using RThomasHyde.TypeGenerator.Delegates;
 
-namespace Weikio.TypeGenerator.Types
+namespace RThomasHyde.TypeGenerator.Types
 {
     public class TypeToTypeWrapper
     {
@@ -249,7 +248,7 @@ namespace Weikio.TypeGenerator.Types
             if (options.OnBeforeMethod != null)
             {
                 code.AppendLine(
-                    $"Weikio.TypeGenerator.Types.TypeCache.Details(System.Guid.Parse(\"{id.ToString()}\")).OnBeforeMethod.DynamicInvoke(_instance, _instance.GetType().GetMethod(\"{originalMethodName}\", System.Reflection.BindingFlags.Public | System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Static));");
+                    $"RThomasHyde.TypeGenerator.Types.TypeCache.Details(System.Guid.Parse(\"{id.ToString()}\")).OnBeforeMethod.DynamicInvoke(_instance, _instance.GetType().GetMethod(\"{originalMethodName}\", System.Reflection.BindingFlags.Public | System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Static));");
             }
             
             if (options.OnBeforeMethodCustomCodeGenerator != null)
@@ -274,7 +273,7 @@ namespace Weikio.TypeGenerator.Types
             if (options.OnAfterMethod != null)
             {
                 code.AppendLine(
-                    $"Weikio.TypeGenerator.Types.TypeCache.Details(System.Guid.Parse(\"{id.ToString()}\")).OnAfterMethod.DynamicInvoke(_instance, _instance.GetType().GetMethod(\"{originalMethodName}\", System.Reflection.BindingFlags.Public | System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Static));");
+                    $"RThomasHyde.TypeGenerator.Types.TypeCache.Details(System.Guid.Parse(\"{id.ToString()}\")).OnAfterMethod.DynamicInvoke(_instance, _instance.GetType().GetMethod(\"{originalMethodName}\", System.Reflection.BindingFlags.Public | System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Static));");
             }
 
             if (options.OnAfterMethodCustomCodeGenerator != null)
@@ -314,7 +313,7 @@ namespace Weikio.TypeGenerator.Types
             code.AppendLine();
 
             code.AppendLine(
-                $"private {originalType.FullName} _instance = ({originalType.FullName}) Weikio.TypeGenerator.Types.TypeCache.Get(System.Guid.Parse(\"{id.ToString()}\"));");
+                $"private {originalType.FullName} _instance = ({originalType.FullName}) RThomasHyde.TypeGenerator.Types.TypeCache.Get(System.Guid.Parse(\"{id.ToString()}\"));");
 
             code.AppendLine();
         }
@@ -339,7 +338,7 @@ namespace Weikio.TypeGenerator.Types
                 }
 
                 code.AppendLine(
-                    $"Weikio.TypeGenerator.Types.TypeCache.Details(System.Guid.Parse(\"{id.ToString()}\")).OnConstructor.DynamicInvoke(_instance);");
+                    $"RThomasHyde.TypeGenerator.Types.TypeCache.Details(System.Guid.Parse(\"{id.ToString()}\")).OnConstructor.DynamicInvoke(_instance);");
 
                 if (options.OnConstructorCustomCodeGenerator != null)
                 {
@@ -358,7 +357,7 @@ namespace Weikio.TypeGenerator.Types
                 code.AppendLine("{");
 
                 code.AppendLine(
-                    $"Weikio.TypeGenerator.Types.TypeCache.Details(System.Guid.Parse(\"{id.ToString()}\")).OnConstructor.DynamicInvoke(_instance);");
+                    $"RThomasHyde.TypeGenerator.Types.TypeCache.Details(System.Guid.Parse(\"{id.ToString()}\")).OnConstructor.DynamicInvoke(_instance);");
 
                 if (options.OnConstructorCustomCodeGenerator != null)
                 {
