@@ -1,18 +1,16 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Diagnostics;
 using System.Linq;
 using System.Reflection;
-using Microsoft.CodeAnalysis;
-using Microsoft.CodeAnalysis.CSharp;
-using Microsoft.CodeAnalysis.CSharp.Syntax;
 using Newtonsoft.Json;
-using Weikio.TypeGenerator.Types;
+using RThomasHyde.TypeGenerator.Tests.TestClasses;
+using RThomasHyde.TypeGenerator.Types;
 using Xunit;
 using Xunit.Abstractions;
 
-namespace Weikio.TypeGenerator.Tests
+namespace RThomasHyde.TypeGenerator.Tests
 {
     public class TypeWrapperTests
     {
@@ -421,7 +419,7 @@ namespace Weikio.TypeGenerator.Tests
         }
 
 #if DEBUG
-        [Fact]
+        [Fact(Skip="not implemented")]
         public void CanAddAttributesToType()
         {
             throw new NotImplementedException();
@@ -441,7 +439,7 @@ namespace Weikio.TypeGenerator.Tests
             Assert.Single(result.GetCustomAttributes(typeof(DisplayNameAttribute), true));
         }
 
-        [Fact]
+        [Fact(Skip="not implemented")]
         public void CanAddAttributesToMethod()
         {
             throw new NotImplementedException();
@@ -456,7 +454,7 @@ namespace Weikio.TypeGenerator.Tests
                 });
         }
 
-        [Fact]
+        [Fact(Skip="not implemented")]
         public void CanAddAttributesToConstructor()
         {
             throw new NotImplementedException();

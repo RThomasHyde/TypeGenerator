@@ -1,8 +1,8 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Reflection;
 
-namespace Weikio.TypeGenerator.Types
+namespace RThomasHyde.TypeGenerator.Types
 {
     public class TypeToTypeWrapperOptions
     {

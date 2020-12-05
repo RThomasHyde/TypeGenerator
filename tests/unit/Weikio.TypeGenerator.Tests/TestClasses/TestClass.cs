@@ -1,6 +1,6 @@
-﻿using System;
+using System;
 
-namespace Weikio.TypeGenerator.Tests
+namespace RThomasHyde.TypeGenerator.Tests.TestClasses
 {
     public class TestClass
     {

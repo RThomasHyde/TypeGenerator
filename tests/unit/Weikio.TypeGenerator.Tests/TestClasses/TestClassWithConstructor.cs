@@ -1,4 +1,4 @@
-﻿namespace Weikio.TypeGenerator.Tests
+namespace RThomasHyde.TypeGenerator.Tests.TestClasses
 {
     public class TestClassWithConstructor
     {

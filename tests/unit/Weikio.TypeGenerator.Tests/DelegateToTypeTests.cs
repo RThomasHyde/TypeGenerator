@@ -1,14 +1,14 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Reflection;
 using System.Threading.Tasks;
-using Weikio.TypeGenerator.Delegates;
+using RThomasHyde.TypeGenerator.Delegates;
 using Xunit;
 using Xunit.Abstractions;
 
-namespace Weikio.TypeGenerator.Tests
+namespace RThomasHyde.TypeGenerator.Tests
 {
     public class DelegateToTypeTests
     {

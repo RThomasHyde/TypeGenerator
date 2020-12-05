@@ -1,11 +1,11 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using System.Reflection;
 using System.Text;
 
-namespace Weikio.TypeGenerator.Delegates
+namespace RThomasHyde.TypeGenerator.Delegates
 {
     /// <summary>
     /// Allows the creation of a Type from a delegate (System.Action, System.Func)
@@ -86,7 +86,7 @@ namespace Weikio.TypeGenerator.Delegates
             }
 
             code.AppendLine("{");
-            code.AppendLine($"var deleg = Weikio.TypeGenerator.Delegates.DelegateCache.Get(System.Guid.Parse(\"{id.ToString()}\"));");
+            code.AppendLine($"var deleg = RThomasHyde.TypeGenerator.Delegates.DelegateCache.Get(System.Guid.Parse(\"{id.ToString()}\"));");
 
             if (typeof(void) != returnType)
             {

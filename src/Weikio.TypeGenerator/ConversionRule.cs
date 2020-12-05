@@ -1,7 +1,7 @@
-﻿using System;
+using System;
 using System.Reflection;
 
-namespace Weikio.TypeGenerator
+namespace RThomasHyde.TypeGenerator
 {
     public class ParameterConversionRule
     {
